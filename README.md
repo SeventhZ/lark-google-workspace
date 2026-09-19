@@ -9,3 +9,5 @@ Google OAuth uses the limited `drive.file` scope. Configure the Pages origin in 
 Built with @lark-base-open/js-sdk 1.0.2 (ISC). Bundled third-party notices are retained in app.js.
 
 New uploads are saved in a LARK folder in the connected account’s My Drive. The helper creates this folder automatically and provides a folder link. Existing duplicate files continue to reuse their original links.
+
+File links written back to Lark use numbered entries separated by a blank line, with clickable full names.
