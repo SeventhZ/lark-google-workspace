@@ -3,13 +3,14 @@
 <body><main>
   <header><span class="brand" aria-hidden="true">↗</span><div><h1>Google 文件助手</h1><p>从 Lark 到你的 Google Workspace</p></div></header>
   <section class="account-card"><div class="row"><div><span class="eyebrow">GOOGLE DRIVE</span><strong id="account">尚未连接</strong></div><button id="connect">连接 Google</button></div><p>保存位置：我的云端硬盘 / LARK。<br><a id="folder-link" hidden target="_blank" rel="noopener noreferrer">打开 LARK 文件夹 ↗</a></p><button id="disconnect" hidden>退出登录</button></section>
+  <section class="account-card"><span class="eyebrow">WAREHOUSE 自动上传</span><p id="background-status">连接 Google 后可查看后台状态。</p><p>每分钟检查 Document 新附件，默认转换并存入 LARK。助手关闭也可运行。首次启用跳过已有附件。</p><button id="background-enable" disabled>启用后台上传</button> <button id="background-disable" hidden>暂停后台上传</button> <button id="background-retry" hidden>重试失败文件</button></section>
   <section class="context"><span class="dot"></span><div><span class="eyebrow">关联到当前记录</span><strong id="record">正在连接 Lark…</strong></div><button id="refresh" class="icon" aria-label="刷新当前记录">↻</button></section>
   <div class="tabs" role="tablist" aria-label="文件来源"><button id="tab-attachment" role="tab" aria-selected="true" aria-controls="attachments">记录附件</button><button id="tab-local" role="tab" aria-selected="false" aria-controls="locals">电脑文件</button></div>
   <section id="attachments" role="tabpanel" aria-labelledby="tab-attachment"><label class="label" for="field">附件字段</label><select id="field"><option>请先选择一条记录</option></select><div id="file-list" class="file-list"><p class="empty">点击表格中的一条记录，即可选择附件。</p></div></section>
   <section id="locals" role="tabpanel" aria-labelledby="tab-local" hidden><label class="drop"><span class="upload-icon">↑</span><strong>选择电脑上的文件</strong><span>支持多选 · 每个文件最多 100 MB</span><input id="local-files" type="file" multiple aria-label="选择电脑文件"></label><div id="local-list" class="file-list"></div></section>
-  <section class="settings"><label for="mode" class="label">上传方式</label><select id="mode"><option value="original">保留原文件</option><option value="convert">转换为 Google 文档 / 表格 / 幻灯片</option></select><p id="mode-help">保留 Excel、Word、PDF 和图片等原文件格式，在 Google 中打开。</p></section>
+  <section class="settings"><label for="mode" class="label">上传方式</label><select id="mode"><option value="convert" selected>转换为 Google 文档 / 表格 / 幻灯片（默认）</option><option value="original">保留原文件</option></select><p id="mode-help">Excel / CSV → Sheets，Word / TXT → Docs，PowerPoint → Slides。PDF 和图片保留原格式。</p></section>
   <aside>上传成功后，链接会追加到当前记录的「Google Workspace 文件」字段。</aside>
   <button id="upload" class="primary" disabled>上传到 Google Drive</button>
   <div id="status" role="status" aria-live="polite"></div><div id="results"></div>
   <footer>仅访问通过本助手使用的 Google 文件。<br>自动恢复登录；可随时退出。</footer>
-</main><script type="module" src="./app.js?v=6c878f7c7307"></script></body></html>
+</main><script type="module" src="./app.js?v=4ecbbe741c01"></script></body></html>

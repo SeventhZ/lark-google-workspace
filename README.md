@@ -1,13 +1,15 @@
 # Google 文件助手
 
-Personal Lark Base extension: upload local files or selected record attachments to Google Drive, optionally convert supported files to Google Workspace formats, and write open links back to the selected record.
+Personal Lark Base extension: upload local files or selected record attachments to Google Drive, convert supported files by default to Google Workspace formats, and write open links back to the selected record.
 
 This repository contains the static production build. Host the root directory with GitHub Pages and use the resulting HTTPS URL as the Lark custom extension service URL.
 
-Google OAuth uses the limited `drive.file` scope. Configure the Pages origin in the Google OAuth web client. Google access tokens remain in browser memory. An authenticated Supabase backend encrypts long-term Google credentials and renews them automatically. The browser stores a revocable app session; use the extension’s sign-out button to stop automatic connection. Sessions expire after 30 inactive days or a maximum of 180 days. Files are sent directly from the browser to Google Drive; GitHub hosts only the extension assets.
+Google OAuth uses the limited `drive.file` scope. Configure the Pages origin in the Google OAuth web client. Google access tokens remain in browser memory. An authenticated Supabase backend encrypts long-term Google credentials and renews them automatically. The browser stores a revocable app session; use the extension’s sign-out button to stop automatic connection. Sessions expire after 30 inactive days or a maximum of 180 days. Manual uploads go from the browser to Google Drive. When separately enabled, a Supabase background worker checks new Warehouse Document attachments every minute, transfers them from Lark to Google Drive, and writes links back. GitHub hosts only static extension assets. Signing out of the browser session bound to background upload stops that connection.
 
 Built with @lark-base-open/js-sdk 1.0.2 (ISC). Bundled third-party notices are retained in app.js.
 
 New uploads are saved in a LARK folder in the connected account’s My Drive. The helper creates this folder automatically and provides a folder link. Existing duplicate files continue to reuse their original links.
 
-File links written back to Lark use numbered entries separated by a blank line, with clickable full names.
+File links written back to Lark use numbered entries separated by a blank line, with clickable links.
+
+Background upload starts paused until the Lark application connection is configured and enabled in the helper. Initial activation records existing attachments without re-uploading them. Processing errors are shown in the helper and can be retried.
