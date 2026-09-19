@@ -7,3 +7,5 @@ This repository contains the static production build. Host the root directory wi
 Google OAuth uses the limited `drive.file` scope. Configure the Pages origin in the Google OAuth web client. Google access tokens remain in browser memory. An authenticated Supabase backend encrypts long-term Google credentials and renews them automatically. The browser stores a revocable app session; use the extension’s sign-out button to stop automatic connection. Sessions expire after 30 inactive days or a maximum of 180 days. Files are sent directly from the browser to Google Drive; GitHub hosts only the extension assets.
 
 Built with @lark-base-open/js-sdk 1.0.2 (ISC). Bundled third-party notices are retained in app.js.
+
+New uploads are saved in a LARK folder in the connected account’s My Drive. The helper creates this folder automatically and provides a folder link. Existing duplicate files continue to reuse their original links.
